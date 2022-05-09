@@ -1,0 +1,1 @@
+(()=>{"use strict";var i,t;(i=5,t=i={},{health:t,isHit:function(i){t-=i},coordinates:i}).isHit(5)})();
