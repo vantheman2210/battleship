@@ -45,10 +45,9 @@ test('Record of missed shots 2', () => {
 test('Testing whether all ships have been sunk', () => {
 	const test = Gameboard([ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]);
 	expect(test.allSunk()).toBe(false);
-	for (let i = 1; i < 18; i++) {
+	for (let i = 1; i < 18; i += 1) {
 		test.receiveAttack(i);
-	}
-
+	};
 	expect(test.allSunk()).toBe(true);
 });
 

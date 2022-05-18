@@ -3,9 +3,8 @@ import Ship from './shipFactory';
 function Gameboard(player) {
 	const board = Array.from({ length: 100 }, (_, i) => i);
 	const createShip = Ship(player);
-	// const allShips = [];
-	// const missedAttack = [];
-	createShip.coordinates.map((positions) => (board[positions] = 'ship'));
+
+	createShip.coordinates.map((positions) => (board[positions] = 'ship'))
 
 	// Function that determines whether attack hit a ship
 	// Excluded 'missed'
@@ -16,7 +15,7 @@ function Gameboard(player) {
 		} else {
 			board[attack] = 'missed';
 		}
-	};
+	}
 
 	// Function that checks whether all ships have been sunk
 	// Filtering board array, and checking whether 17 positions have been hit
@@ -26,9 +25,7 @@ function Gameboard(player) {
 			return true;
 		}
 		return false;
-	};
-
-	// const allSunk = () => allShips.every((element) => element === 'hit');
+	}
 
 	return {
 		createShip,

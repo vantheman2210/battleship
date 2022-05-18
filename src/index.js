@@ -1,16 +1,12 @@
-import Ship from './shipFactory';  
-import Gameboard from './gameboard';
 
-const test = Gameboard([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17]); 
+import Gameboard from './gameboard'; 
+import Player from './player'; 
+import render from './domControl';
 
+const test1 = Gameboard([1, 2, 3, 4]); 
+const test2 = Player(test1); 
 
-console.log(test.board) 
-for(let i = 1;  i < 18; ++i) { 
-  test.receiveAttack(i);
-} 
-console.log(test.board)
- 
- 
+const test3 = Gameboard([1, 2, 3, 4]); 
+const test4 = Player(test2); 
 
- 
- 
+render(test1, test3);
