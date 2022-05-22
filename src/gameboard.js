@@ -4,6 +4,7 @@ function Gameboard(player) {
 	const board = Array.from({ length: 100 }, (_, i) => i);
 	const createShip = Ship(player);
 
+	// eslint-disable-next-line no-return-assign
 	createShip.coordinates.map((positions) => (board[positions] = 'ship'))
 
 	// Function that determines whether attack hit a ship

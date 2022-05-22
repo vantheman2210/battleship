@@ -14,7 +14,7 @@ function Player(gameboard) {
 		const randomAttack = board[Math.floor(Math.random() * board.length)]
 		boardComputer[randomAttack] = 'attacked';  
 	  gameboard.receiveAttack(randomAttack);	 
-		return boardComputer[randomAttack];
+		return randomAttack;
 	};
 
 	return {
