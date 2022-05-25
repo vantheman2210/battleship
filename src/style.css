@@ -43,8 +43,40 @@ html, body {
   background-color: aqua;
 } 
 
-.endGame { 
-  display: none; 
+.modal { 
+  visibility: hidden; 
+  opacity: 0;
   position: fixed; 
-  overflow: auto;
+  overflow: auto; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;  
+  
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+} 
+
+.modalContent { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem; 
+    border: 5px solid black;
+} 
+
+.show-modal { 
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+} 
+
+.is-blurred {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
 }

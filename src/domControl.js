@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-expressions */
-const container = document.querySelector('.container');
+const container = document.querySelector('.container'); 
+const text = document.querySelector('p'); 
+const modal = document.querySelector('.modal'); 
 
 const render = (board1, board2) => {
 	// Creating two grids for displaying boards
@@ -38,6 +40,18 @@ const markSpots = (board1, board2) => {
 		element === 'missed' ? (player[i].style.background = 'gray') : null; 
 		element === 'hit' ? (player[i].style.background = 'black') : null;
 	});
-};
+}; 
 
-export { render, markSpots };
+const showModal = (input) => { 
+	modal.classList.toggle('show-modal'); 
+	container.classList.toggle('is-blurred'); 
+	text.textContent = input;
+}; 
+
+const restart = () => { 
+	container.innerHTML = ''; 
+  modal.classList.toggle('show-modal'); 
+	container.classList.toggle('is-blurred');
+}
+
+export { render, markSpots, showModal, restart };
