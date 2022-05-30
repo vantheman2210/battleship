@@ -1,23 +1,26 @@
 import Ship from './shipFactory';
 // Function that places ships on board, and receives attacks, and keeping track of missed shots
-function Gameboard(cords1, cords2, cords3, cords4, cords5) {
+function Gameboard() {
 	const board = Array.from({ length: 100 }, (_, i) => i);
-	const carrier = Ship(cords1);
-	const battleship = Ship(cords2);
-	const cruiser = Ship(cords3);
-	const submarine = Ship(cords4);
-	const destroyer = Ship(cords5);
+
+	const carrier = Ship();
+	const battleship = Ship();
+	const cruiser = Ship();
+	const submarine = Ship();
+	const destroyer = Ship();
 
 	const createShip = [
-		carrier.coordinates,
-		battleship.coordinates,
-		cruiser.coordinates,
-		submarine.coordinates,
-		destroyer.coordinates
+		carrier.shipCoord,
+		battleship.shipCoord,
+		cruiser.shipCoord,
+		submarine.shipCoord,
+		destroyer.shipCoord
 	];
 
-	// eslint-disable-next-line no-return-assign
-	createShip.flat().map((positions) => (board[positions] = 'ship'));
+	const populateBoard = () => {
+		// eslint-disable-next-line no-return-assign
+		createShip.flat().map((positions) => (board[positions] = 'ship'));
+	};
 
 	// Function that determines whether attack hit a ship
 	// Excluded 'missed'
@@ -59,12 +62,36 @@ function Gameboard(cords1, cords2, cords3, cords4, cords5) {
 		else if (checkArr === checkDestroyer) destroyer.isHit(attack);
 	};
 
+	
+	
+
+	const generate = () => {
+		const random = Math.floor(Math.random() * carr.directions.length);
+		const current = carr.directions[random];
+		let direction = 0;
+		if (random === 0) direction = 1;
+		if (random === 1) direction = 10;
+		const randomStart = Math.abs(Math.floor(Math.random() * board.length - carr.directions[0].length * direction));
+
+		current.forEach((element) => {
+			board[randomStart + element] = 'ship';
+			carrier.placeCoords([ randomStart + element ]);
+		});
+	};
+
 	return {
-		createShip,
 		receiveAttack,
 		allSunk,
-		board
+		board,
+		generate,
+		createShip
 	};
 }
 
 export default Gameboard;
+
+/*
+      const s = board.filter((slot) => slot !== 'ship');
+			const one = Array.from({ length: 3 }, (__, i) => i);
+			submarine.placeCoords(one);
+			populateBoard(); */

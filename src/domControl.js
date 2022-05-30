@@ -17,9 +17,11 @@ const render = (board1, board2) => {
 		container.append(grid1);
 	});
 
-	board2.board.forEach(() => {
+	board2.board.forEach((__a, i) => {
 		const div = document.createElement('div');
-		div.className = 'cells2';
+		div.className = 'cells2';  
+		div.textContent = i;
+		__a === 'ship' ? div.style.backgroundColor = 'red' : null; 
 		grid2.append(div);
 		container.append(grid2);
 	});
