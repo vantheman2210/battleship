@@ -17,11 +17,6 @@ function Gameboard() {
 		destroyer.shipCoord
 	];
 
-	const populateBoard = () => {
-		// eslint-disable-next-line no-return-assign
-		createShip.flat().map((positions) => (board[positions] = 'ship'));
-	};
-
 	// Function that determines whether attack hit a ship
 	// Excluded 'missed'
 	const receiveAttack = (attack) => {
@@ -62,28 +57,41 @@ function Gameboard() {
 		else if (checkArr === checkDestroyer) destroyer.isHit(attack);
 	};
 
-	
-	
-
-	const generate = () => {
-		const random = Math.floor(Math.random() * carr.directions.length);
-		const current = carr.directions[random];
+	const generate = (ship, ship2) => {
+		const random = Math.floor(Math.random() * ship.directions.length);
+		const current = ship.directions[random];
 		let direction = 0;
 		if (random === 0) direction = 1;
 		if (random === 1) direction = 10;
-		const randomStart = Math.abs(Math.floor(Math.random() * board.length - carr.directions[0].length * direction));
+		const randomStart = Math.abs(Math.floor(Math.random() * board.length - ship.directions[0].length * direction));
 
-		current.forEach((element) => {
+		const left = current.some(index => (randomStart + index) % 10 === 0);  
+		const right = current.some(index => (randomStart + index) % 10 === 10 - 1); 
+		const notAvailable = current.some(index => board[randomStart + index] === 'ship');
+
+		if(!left && !right && !notAvailable || (left && right && !notAvailable && random === 1))
+
+		current.forEach((element) => { 
 			board[randomStart + element] = 'ship';
-			carrier.placeCoords([ randomStart + element ]);
-		});
+			ship2.placeCoords([ randomStart + element ]);
+		}); 
+		else 
+		generate(ship, ship2);
+	};
+
+	const placeComputer = () => {
+		generate(carrier.shipArr[0], carrier);
+		 generate(battleship.shipArr[1], battleship);
+		 generate(cruiser.shipArr[2], cruiser);
+		 generate(submarine.shipArr[3], submarine);
+		 generate(destroyer.shipArr[4], destroyer);
 	};
 
 	return {
 		receiveAttack,
 		allSunk,
 		board,
-		generate,
+		placeComputer,
 		createShip
 	};
 }

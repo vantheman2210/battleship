@@ -11,19 +11,19 @@ function Ship() {
 		},
 		{
 			name: 'battleship',
-			directions: [ [ 0, 1, 2, 3, 4 ], [ 0, width, width * 2, width * 3, width * 4 ] ]
+			directions: [ [ 0, 1, 2, 3 ], [ 0, width, width * 2, width * 3 ] ]
 		},
 		{
 			name: 'cruiser',
-			directions: [ [ 0, 1, 2, 3, 4 ], [ 0, width, width * 2, width * 3, width * 4 ] ]
+			directions: [ [ 0, 1, 2 ], [ 0, width, width * 2 ] ]
 		},
 		{
 			name: 'submarine',
-			directions: [ [ 0, 1, 2, 3, 4 ], [ 0, width, width * 2, width * 3, width * 4 ] ]
+			directions: [ [ 0, 1, 2 ], [ 0, width, width * 2 ] ]
 		},
 		{
 			name: 'destroyer',
-			directions: [ [ 0, 1, 2, 3, 4 ], [ 0, width, width * 2, width * 3, width * 4 ] ]
+			directions: [ [ 0, 1 ], [ 0, width ] ]
 		}
 	];
 
@@ -40,7 +40,7 @@ function Ship() {
 	// eslint-disable-next-line no-return-assign
 	const isHit = (hit) => (shipCoord[hit] = 'hit');
 
-	return { shipCoord, isSunk, isHit, placeCoords };
+	return { shipCoord, isSunk, isHit, placeCoords, shipArr };
 }
 
 export default Ship;

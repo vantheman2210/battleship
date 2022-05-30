@@ -19,10 +19,8 @@ const gameLoop = () => {
   // board2.computerPlacement('cruiser');  
   // board2.computerPlacement('submarine');  
   // board2.computerPlacement('destroyer');  
-	board2.generate();
-	console.log(board2.board);  
-	console.log(board2.board.filter(element => element === 'ship'));  
-	console.log(board2.createShip)
+	board2.placeComputer();
+	console.log(board2.board.filter(element => element === 'ship'));
 	
 	
 	
