@@ -3,7 +3,8 @@
 // Factory function that creates ship objects
 function Ship() {
 	const width = 10;
-
+  
+	// Array that contains ships, and their lengths
 	const shipArr = [
 		{
 			name: 'carrier',
@@ -28,7 +29,7 @@ function Ship() {
 	];
 
 	const shipCoord = [];
-
+  // Maps coords to shipCoord array. To be used for checking hits, and sunk.
 	const placeCoords = (coordinates) => {
 		coordinates.map((coordinate) => shipCoord.push(coordinate));
 	};

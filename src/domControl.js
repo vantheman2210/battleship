@@ -10,9 +10,11 @@ const render = (board1, board2) => {
 	const grid2 = document.createElement('grid');
 	grid2.className = 'grid2';
 
-	board1.board.forEach(() => {
+	board1.board.forEach((__a, i) => {
 		const div = document.createElement('div');
-		div.className = 'cells1';
+		div.className = 'cells1'; 
+		div.textContent = i; 
+		__a === 'ship' ? div.style.backgroundColor = 'red' : null; 
 		grid1.append(div);
 		container.append(grid1);
 	});
