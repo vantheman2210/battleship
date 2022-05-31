@@ -63,7 +63,7 @@ const restart = () => {
   modal.classList.toggle('show-modal'); 
 	container.classList.toggle('is-blurred');
 } 
-let horizontal = false;
+
 const rotate = (e) => { 
 	if(e.target.className === 'carrier')
 	carrier.classList.toggle(`carrierContainer-horizontal`); 
