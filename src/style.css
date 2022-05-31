@@ -11,7 +11,8 @@ body {
 	gap: 5px;
 	grid-template-columns: 1fr 1fr;
 	justify-items: center;
-	align-items: center;
+	align-items: center; 
+	cursor: pointer;
 }
 
 .grid1,
@@ -83,19 +84,27 @@ body {
 .is-blurred {
 	filter: blur(2px);
 	-webkit-filter: blur(2px);
+} 
+
+.ship-container { 
+	display: flex; 
+	flex-direction: row; 
+	gap: 5px;
 }
 
 .ship {
 	height: fit-content;
 	width: fit-content;
 	border: 2px solid black;
-	cursor: move;
-} 
+	cursor: move; 
+}  
 
-.carrier { 
-  height: 40px; 
+.carrier, .cruiser, .battleship, .submarine, .destroyer { 
+	height: 40px; 
   width: 40px;
 }
+
+
 
 /*
 .carrierSize {
