@@ -1,6 +1,6 @@
 import Gameboard from './gameboard';
 import Player from './player';
-import { render, markSpots, showModal, restart } from './domControl';
+import { render, markSpots, showModal, restart, rotate } from './domControl';
 
 // Function that controls entire gameLoop
 const gameLoop = () => {
@@ -20,7 +20,7 @@ const gameLoop = () => {
   // board2.computerPlacement('submarine');  
   // board2.computerPlacement('destroyer');  
 	board2.placeComputer();
-	console.log(board2.board.filter(element => element === 'ship'));
+	
 	
 	
 	
@@ -73,8 +73,19 @@ gameLoop();
 document.querySelector('#restart').addEventListener('click', () => {
 	restart();
 	gameLoop();
-});
+}); 
 
+const carrier = document.querySelector('.carrierContainer');  
+const battleship = document.querySelector('.battleshipContainer');
+const cruiser = document.querySelector('.cruiserContainer');
+const submarine = document.querySelector('.submarineContainer');
+const destroyer = document.querySelector('.destroyerContainer');
+
+carrier.addEventListener('click', rotate);
+battleship.addEventListener('click', rotate);
+cruiser.addEventListener('click', rotate);
+submarine.addEventListener('click', rotate);
+destroyer.addEventListener('click', rotate);
 /* const cells = [...document.querySelectorAll('.cells2')]; 
 
 

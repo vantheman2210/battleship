@@ -1,7 +1,13 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-expressions */ 
+// Selecting elements
 const container = document.querySelector('.container'); 
 const text = document.querySelector('p'); 
-const modal = document.querySelector('.modal'); 
+const modal = document.querySelector('.modal');  
+const carrier = document.querySelector('.carrierContainer'); 
+const battleship = document.querySelector('.battleshipContainer');
+const cruiser = document.querySelector('.cruiserContainer');
+const submarine = document.querySelector('.submarineContainer');
+const destroyer = document.querySelector('.destroyerContainer');
 
 const render = (board1, board2) => {
 	// Creating two grids for displaying boards
@@ -56,6 +62,19 @@ const restart = () => {
 	container.innerHTML = ''; 
   modal.classList.toggle('show-modal'); 
 	container.classList.toggle('is-blurred');
+} 
+let horizontal = false;
+const rotate = (e) => { 
+	if(e.target.className === 'carrier')
+	carrier.classList.toggle(`carrierContainer-horizontal`); 
+	if(e.target.className === 'battleship')
+	battleship.classList.toggle(`battleshipContainer-horizontal`); 
+	if(e.target.className === 'cruiser')
+	cruiser.classList.toggle(`cruiserContainer-horizontal`); 
+	if(e.target.className === 'submarine')
+	submarine.classList.toggle(`submarineContainer-horizontal`); 
+	if(e.target.className === 'destroyer')
+	destroyer.classList.toggle(`destroyerContainer-horizontal`);
 }
 
-export { render, markSpots, showModal, restart };
+export { render, markSpots, showModal, restart, rotate };
