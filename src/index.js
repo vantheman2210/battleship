@@ -1,29 +1,22 @@
+/* eslint-disable no-use-before-define */
 import Gameboard from './gameboard';
 import Player from './player';
 import { render, markSpots, showModal, restart, rotate } from './domControl';
 
 // Function that controls entire gameLoop
 const gameLoop = () => {
-	let activePlayer = 0; 
-	
+	let activePlayer = 0;
+
 	// Creating player gameboards
 	const board1 = Gameboard();
 	const board2 = Gameboard();
 
 	// Creating players
 	const player1 = Player(board2);
-	const player2 = Player(board1); 
+	const player2 = Player(board1);
 
-	// board2.computerPlacement('carrier');  
-	// board2.computerPlacement('battleship');  
-  // board2.computerPlacement('cruiser');  
-  // board2.computerPlacement('submarine');  
-  // board2.computerPlacement('destroyer');  
 	board2.placeComputer();
-	
-	
-	
-	
+
 	// Rendering boards
 	render(board1, board2);
 
@@ -73,18 +66,61 @@ gameLoop();
 document.querySelector('#restart').addEventListener('click', () => {
 	restart();
 	gameLoop();
-}); 
+});
 
-const carrier = document.querySelector('.carrierContainer');  
+const carrier = document.querySelector('.carrierContainer');
 const battleship = document.querySelector('.battleshipContainer');
 const cruiser = document.querySelector('.cruiserContainer');
 const submarine = document.querySelector('.submarineContainer');
 const destroyer = document.querySelector('.destroyerContainer');
+const ships = document.querySelectorAll('.ships');
+const playerBoard = document.querySelectorAll('.cells1');
 
 carrier.addEventListener('click', rotate);
 battleship.addEventListener('click', rotate);
 cruiser.addEventListener('click', rotate);
 submarine.addEventListener('click', rotate);
-destroyer.addEventListener('click', rotate);
+destroyer.addEventListener('click', rotate); 
 
 
+ships.forEach((ship) => ship.addEventListener('dragstart', dragStart));
+playerBoard.forEach((cell) => cell.addEventListener('dragstart', dragStart)); 
+playerBoard.forEach((cell) => cell.addEventListener('dragover', dragOver)); 
+playerBoard.forEach((cell) => cell.addEventListener('dragenter', dragEnter)); 
+playerBoard.forEach((cell) => cell.addEventListener('dragleave', dragLeave)); 
+playerBoard.forEach((cell) => cell.addEventListener('drop', dragDrop)); 
+
+let draggedShip;
+let shipIndex; 
+let draggedShipLength;
+
+ships.forEach((ship) =>
+	ship.addEventListener('mousedown', (e) => {
+		shipIndex = e.target.dataset.index;
+		console.log(shipIndex);
+	})
+); 
+
+function dragStart () {  
+  console.log(this)
+	console.log('drag');
+	draggedShip = this; 
+	draggedShipLength = this.childNodes.length; 
+	console.log(draggedShip, draggedShipLength)
+};
+
+function dragOver (e) {
+	e.preventDefault();
+};
+
+function dragEnter (e) {
+	e.preventDefault();
+}; 
+
+function dragDrop () { 
+  console.log('drop')
+}; 
+
+function dragLeave () { 
+	console.log('drag leave');
+};
