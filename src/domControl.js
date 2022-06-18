@@ -53,11 +53,6 @@ const markSpots = (board1, board2) => {
 	});
 }; 
 
-const markShipPlacement = () => { 
-	const placement = document.querySelectorAll('.cells1');
-	placement === 'ship' ? (placement.style.backgroundColor = 'red') : null;
-}
-
 const showModal = (input) => {
 	modal.classList.toggle('show-modal');
 	container.classList.toggle('is-blurred');
@@ -122,4 +117,4 @@ const hideModalPlace = () => {
 	modalPlace.classList.toggle('modal-place-show');
 }
 
-export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace, markShipPlacement };
+export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace };

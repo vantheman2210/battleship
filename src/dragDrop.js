@@ -1,5 +1,5 @@
 /* eslint-disable radix */
-import { renderModalBoard, rotate, markShipPlacement } from './domControl';
+import { renderModalBoard, rotate } from './domControl';
 
 renderModalBoard();
 
