@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 import Ship from './shipFactory';
 // Function that places ships on board, and receives attacks, and keeping track of missed shots
 function Gameboard() {
@@ -15,7 +16,12 @@ function Gameboard() {
 		cruiser.shipCoord,
 		submarine.shipCoord,
 		destroyer.shipCoord
-	];
+	]; 
+
+	// Function that marks player board ships 
+	const markShips = (coord) => { 
+		coord.forEach(position => board[position] = 'ship')
+	}
 
 	// Function that determines whether attack hit a ship
 	// Excluded 'missed'
@@ -85,13 +91,40 @@ function Gameboard() {
 		generate(cruiser.shipArr[2], cruiser);
 		generate(submarine.shipArr[3], submarine);
 		generate(destroyer.shipArr[4], destroyer);
-	};
+	};  
+
+	
+
+	function placePlayer (ship, coord) { 
+		if(ship === 'carrier') { 
+			carrier.placeCoords(coord) 
+			markShips(coord);
+		} 
+		else if(ship === 'cruiser') { 
+			cruiser.placeCoords(coord) 
+			markShips(coord);
+		}
+
+		else if(ship === 'battleship') { 
+			battleship.placeCoords(coord) 
+			markShips(coord);
+		} 
+		else if(ship === 'submarine') { 
+			submarine.placeCoords(coord) 
+			markShips(coord);
+		} 
+		else if(ship === 'destroyer') { 
+			destroyer.placeCoords(coord) 
+			markShips(coord);
+		} 
+	}
 
 	return {
 		receiveAttack,
 		allSunk,
 		board,
 		placeComputer,
+		placePlayer, 
 		createShip
 	};
 }

@@ -1,7 +1,36 @@
+@font-face {
+	font-family: 'Arcade';
+	src: url(./Fonts/arcadeclassic/ARCADECLASSIC.TTF);
+} 
+
+* { 
+	font-family: 'Arcade', sans-serif;
+}
+
 html,
 body {
 	height: 100%;
-	width: 100%;
+	width: 100%; 
+	background-color: black;
+}  
+
+header { 
+	text-align: center; 
+	letter-spacing: 5px;
+	font-size: 30px; 
+	color: rgb(1, 165, 1);
+} 
+
+.sonar {
+	background: black;
+	border-radius: 50%;
+	margin: 0px;
+	height: 800px;
+	width: 800px; 
+
+	box-shadow: 0 0 0 0 rgb(0, 156, 34);
+	transform: scale(1);
+	animation: pulse 4s infinite;
 }
 
 .container {
@@ -25,7 +54,8 @@ body {
 
 .grid1 {
 	grid-column: 1 / 1;
-	grid-row: auto;
+	grid-row: auto; 
+	
 }
 
 .grid2 {
@@ -39,13 +69,45 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-color: white;
-	border: 2px solid black;
-	text-align: center;
+	/* border: 2px solid rgb(255, 254, 254); */ 
+	box-shadow: 0px 0px 20px 7px rgb(1 165 1);
+	text-align: center; 
+	cursor: crosshair;
 }
 
 .cells1:hover,
 .cells2:hover {
-	background-color: aqua;
+	background-color: rgba(1, 165, 1);
+} 
+
+.start-modal { 
+	position: fixed;
+	overflow: auto;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+} 
+
+.start-content {  
+	display: flex;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 1rem 1.5rem;
+	width: 12rem; 
+	height: 24rem;
+	border-radius: 0.5rem;
+	border: 2px solid rgb(255, 255, 255);  
+	align-items: center; 
+	justify-content: center;
+} 
+
+.playGame { 
+	height: fit-content; 
+	width: fit-content;
 }
 
 .modal {
@@ -57,7 +119,6 @@ body {
 	top: 0;
 	width: 100%;
 	height: 100%;
-
 	transform: scale(1.1);
 	transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
 }
@@ -71,12 +132,19 @@ body {
 	padding: 1rem 1.5rem;
 	width: 24rem;
 	border-radius: 0.5rem;
-	border: 5px solid black;
+	border: 5px solid rgb(255, 255, 255);
 }
 
-.show-modal {
-	opacity: 1;
+.show-modal {  
 	visibility: visible;
+	position: absolute; 
+	position: fixed;
+	overflow: auto;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1; 
 	transform: scale(1.0);
 	transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
@@ -84,24 +152,53 @@ body {
 .is-blurred {
 	filter: blur(2px);
 	-webkit-filter: blur(2px);
+} 
+
+.modal-place { 
+	display: none;
+	position: relative;
+	overflow: auto; 
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}  
+
+.modal-place-show { 
+	display: grid;
+	position: fixed;
+	overflow: auto; 
+	justify-content: center;
+	left: 0;
+	top: 250px;
+	width: 100%;
+	height: 100%;
+} 
+
+.modal-Board { 
+	display: grid; 
+	gap: 5px;
 }
 
 .ship-container {
-	display: grid; 
+	display: flex; 
+	flex-direction: row;  
 	height: 400px; 
 	width: 400px;
 	gap: 5px; 
-	margin: 20px;
+	
 }
 
 .carrierContainer,
 .battleshipContainer,
 .cruiserContainer,
 .submarineContainer,
-.destroyerContainer {
+.destroyerContainer { 
+	display: flex; 
+	flex-direction: column; 
 	height: fit-content;
 	width: fit-content;
-	border: 2px solid black;
+	border: 2px solid rgb(255, 255, 255);
 	cursor: move;
 }
 
@@ -110,12 +207,11 @@ body {
 .cruiserContainer-horizontal,
 .submarineContainer-horizontal,
 .destroyerContainer-horizontal {
-	display: flex; 
-	flex-wrap: wrap;
+	flex-direction: row; 
 	height: fit-content;
 	width: fit-content;
-	border: 2px solid black;
-	cursor: move;
+	border: 2px solid rgb(255, 255, 255);
+	cursor: move; 
 }
 
 .carrier,
@@ -123,10 +219,32 @@ body {
 .battleship,
 .submarine,
 .destroyer {
-	height: 40px;
+	height: 41px;
 	width: 38px;
 }
 
 .hide {
 	display: none;
+} 
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 156, 34, 0.7);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(0, 156, 34, 0);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(0, 156, 34, 0);
+	} 
+
+	150% { 
+		transform: scale(1.5);
+		box-shadow: 0 0 0 0 rgba(0, 156, 34, 0);
+	}
 }

@@ -1,5 +1,7 @@
-import { renderModalBoard, rotate } from './domControl';
+/* eslint-disable radix */
+import { hideStartScreen, renderModalBoard, rotate } from './domControl';
 
+hideStartScreen();
 renderModalBoard();
 
 const carrier = document.querySelector('.carrierContainer');
@@ -50,26 +52,30 @@ function dragEnter(e) {
 function dragLeave() {
 	console.log('drag leave');
 }
+const coordinates = [];
 
 function dragDrop() {
 	console.log('drop');
-	let shipLastIndex = parseInt(draggedShip.lastElementChild.dataset.index);
-	let shipName = draggedShip.dataset.ship;
-
+	const shipLastIndex = parseInt(draggedShip.lastElementChild.dataset.index);
+	const shipName = draggedShip.dataset.ship;
 	const shipCoords = [];
+
 	if (draggedShip.classList.contains(`${shipName}Container-horizontal`)) {
-		for (let i = 0; i < draggedShipLength; i++) {
+		for (let i = 0; i < draggedShipLength; i += 1) {
 			const coords = playerBoard[parseInt(this.dataset.id) - parseInt(shipIndex) + i];
 			shipCoords.push(parseInt(coords.dataset.id));
 
 			draggedShip.classList.add('hide');
 		}
 	} else if (!draggedShip.classList.contains(`${shipName}Container-horizontal`)) {
-		for (let i = 0; i < draggedShipLength; i++) {
+		for (let i = 0; i < draggedShipLength; i += 1) {
 			const coords = playerBoard[parseInt(this.dataset.id) - parseInt(shipIndex) * 10 + 10 * i];
 			shipCoords.push(parseInt(coords.dataset.id));
 			draggedShip.classList.add('hide');
 		}
 	}
-	console.log(shipCoords);
+	coordinates.push(shipCoords);
+	console.log(coordinates);
 }
+
+export default dragDrop;

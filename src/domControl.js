@@ -9,7 +9,8 @@ const battleship = document.querySelector('.battleshipContainer');
 const cruiser = document.querySelector('.cruiserContainer');
 const submarine = document.querySelector('.submarineContainer');
 const destroyer = document.querySelector('.destroyerContainer');
-
+const startScreen = document.querySelector('.start-modal'); 
+const modalPlace = document.querySelector('.modal-place');
 const render = (board1, board2) => {
 	// Creating two grids for displaying boards
 	const grid1 = document.createElement('grid');
@@ -90,7 +91,8 @@ const rotate = () => {
 };
 
 const renderModalBoard = () => {
-	// Creating board for placing ships
+	// Creating board for placing ships  
+	document.querySelector('.modal-place').classList.toggle('modal-place-show');
 	const arr = Array.from({ length: 100 }, (_, i) => i);
 	const board = document.querySelector('.modal-Board');
 	const grid = document.createElement('grid');
@@ -105,6 +107,13 @@ const renderModalBoard = () => {
 		grid.append(div);
 		board.append(grid);
 	});
-};
+}; 
 
-export { render, markSpots, showModal, restart, rotate, renderModalBoard };
+const hideStartScreen = () => { 
+	startScreen.style.visibility = 'hidden'; 
+}  
+const hideModalPlace = () => { 
+	modalPlace.classList.toggle('modal-place-show');
+}
+
+export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace };
