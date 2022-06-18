@@ -1,16 +1,15 @@
 /* eslint-disable no-use-before-define */
 import Gameboard from './gameboard';
 import Player from './player';
-import { render, markSpots, showModal, restart, renderModalBoard, hideModalPlace } from './domControl';
-import dragDrop from './dragDrop';
+import { render, markSpots, showModal, restart, hideModalPlace, hideStartScreen } from './domControl';
+import coordinates from './dragDrop';
 
 const start = document.querySelector('#playGame');
 const playGame = document.querySelector('#start');
 
-
 // Function that controls entire gameLoop
-const gameLoop = () => { 
-	start.addEventListener('click', dragDrop);
+const gameLoop = (coords) => {
+	console.log(coords);
 	hideModalPlace();
 	let activePlayer = 0;
 
@@ -22,9 +21,12 @@ const gameLoop = () => {
 	const player1 = Player(board2);
 	const player2 = Player(board1);
 
-	board2.placeComputer(); 
-	board1.placePlayer() 
-	
+	board2.placeComputer();
+	board1.placePlayer('carrier', coords[0]);
+	board1.placePlayer('battleship', coords[1]);
+	board1.placePlayer('cruiser', coords[2]);
+	board1.placePlayer('submarine', coords[3]);
+	board1.placePlayer('destroyer', coords[4]);
 
 	// Rendering boards
 	render(board1, board2);
@@ -76,4 +78,5 @@ document.querySelector('#restart').addEventListener('click', () => {
 });
 
 // addEventListener that starts the game
-playGame.addEventListener('click', gameLoop);
+playGame.addEventListener('click', gameLoop.bind(this, coordinates));
+start.addEventListener('click', hideStartScreen);

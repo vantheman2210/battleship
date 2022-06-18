@@ -1,7 +1,6 @@
 /* eslint-disable radix */
-import { hideStartScreen, renderModalBoard, rotate } from './domControl';
+import { renderModalBoard, rotate } from './domControl';
 
-hideStartScreen();
 renderModalBoard();
 
 const carrier = document.querySelector('.carrierContainer');
@@ -52,6 +51,7 @@ function dragEnter(e) {
 function dragLeave() {
 	console.log('drag leave');
 }
+
 const coordinates = [];
 
 function dragDrop() {
@@ -75,7 +75,6 @@ function dragDrop() {
 		}
 	}
 	coordinates.push(shipCoords);
-	console.log(coordinates);
 }
-
-export default dragDrop;
+console.log(coordinates);
+export default coordinates;

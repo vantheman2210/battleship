@@ -92,7 +92,7 @@ const rotate = () => {
 
 const renderModalBoard = () => {
 	// Creating board for placing ships  
-	document.querySelector('.modal-place').classList.toggle('modal-place-show');
+	
 	const arr = Array.from({ length: 100 }, (_, i) => i);
 	const board = document.querySelector('.modal-Board');
 	const grid = document.createElement('grid');
@@ -110,7 +110,8 @@ const renderModalBoard = () => {
 }; 
 
 const hideStartScreen = () => { 
-	startScreen.style.visibility = 'hidden'; 
+	startScreen.style.visibility = 'hidden';  
+	document.querySelector('.modal-place').classList.toggle('modal-place-show'); 
 }  
 const hideModalPlace = () => { 
 	modalPlace.classList.toggle('modal-place-show');
