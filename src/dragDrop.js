@@ -56,6 +56,7 @@ const coordinates = [];
 
 function dragDrop() {
 	console.log('drop');
+	// eslint-disable-next-line no-unused-vars
 	const shipLastIndex = parseInt(draggedShip.lastElementChild.dataset.index);
 	const shipName = draggedShip.dataset.ship;
 	const shipCoords = {
