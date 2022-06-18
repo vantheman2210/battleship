@@ -8,8 +8,13 @@ const start = document.querySelector('#playGame');
 const playGame = document.querySelector('#start');
 
 // Function that controls entire gameLoop
-const gameLoop = (coords) => {
-	console.log(coords);
+const gameLoop = (coords) => { 
+	console.log(coords.flat())
+	console.log(coords[0].name, coords[0].coordinates); 
+	console.log(coords[1].name, coords[1].coordinates); 
+	console.log(coords[2].name, coords[2].coordinates); 
+	console.log(coords[3].name, coords[3].coordinates); 
+	console.log(coords[4].name, coords[4].coordinates);
 	hideModalPlace();
 	let activePlayer = 0;
 
@@ -22,11 +27,11 @@ const gameLoop = (coords) => {
 	const player2 = Player(board1);
 
 	board2.placeComputer();
-	board1.placePlayer('carrier', coords[0]);
-	board1.placePlayer('battleship', coords[1]);
-	board1.placePlayer('cruiser', coords[2]);
-	board1.placePlayer('submarine', coords[3]);
-	board1.placePlayer('destroyer', coords[4]);
+	board1.placePlayer(coords[0].name, coords[0].coordinates);
+	board1.placePlayer(coords[1].name, coords[1].coordinates);
+	board1.placePlayer(coords[2].name, coords[2].coordinates);
+	board1.placePlayer(coords[3].name, coords[3].coordinates);
+	board1.placePlayer(coords[4].name, coords[4].coordinates);
 
 	// Rendering boards
 	render(board1, board2);

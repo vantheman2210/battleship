@@ -51,7 +51,12 @@ const markSpots = (board1, board2) => {
 		element === 'missed' ? (player[i].style.background = 'gray') : null;
 		element === 'hit' ? (player[i].style.background = 'black') : null;
 	});
-};
+}; 
+
+const markShipPlacement = () => { 
+	const placement = document.querySelectorAll('.cells1');
+	placement === 'ship' ? (placement.style.backgroundColor = 'red') : null;
+}
 
 const showModal = (input) => {
 	modal.classList.toggle('show-modal');
@@ -117,4 +122,4 @@ const hideModalPlace = () => {
 	modalPlace.classList.toggle('modal-place-show');
 }
 
-export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace };
+export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace, markShipPlacement };
