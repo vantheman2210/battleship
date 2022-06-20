@@ -2,13 +2,18 @@
 
 // Selecting elements
 const container = document.querySelector('.container');
-const text = document.querySelector('p');
+const text = document.querySelector('.gameOver');
 const modal = document.querySelector('.modal');
 const carrier = document.querySelector('.carrierContainer');
 const battleship = document.querySelector('.battleshipContainer');
 const cruiser = document.querySelector('.cruiserContainer');
 const submarine = document.querySelector('.submarineContainer');
-const destroyer = document.querySelector('.destroyerContainer');
+const destroyer = document.querySelector('.destroyerContainer'); 
+const carrierTwo = document.querySelector('.carrier');
+const battleshipTwo = document.querySelector('.battleship');
+const cruiserTwo = document.querySelector('.cruiser');
+const submarineTwo = document.querySelector('.submarine');
+const destroyerTwo = document.querySelector('.destroyer');
 const startScreen = document.querySelector('.start-modal'); 
 const modalPlace = document.querySelector('.modal-place');
 const render = (board1, board2) => {
@@ -60,9 +65,15 @@ const showModal = (input) => {
 };
 
 const restart = () => {
-	container.innerHTML = '';
+	container.innerHTML = ''; 
+	startScreen.style.visibility = 'visible'; 
 	modal.classList.toggle('show-modal');
-	container.classList.toggle('is-blurred');
+	container.classList.toggle('is-blurred'); 
+	carrier.classList.remove('hide');
+	cruiser.classList.remove('hide');
+	battleship.classList.remove('hide');
+	submarine.classList.remove('hide');
+	destroyer.classList.remove('hide');    
 };
 
 let horizontal = false;
@@ -70,38 +81,54 @@ const rotate = () => {
 	
 	if (horizontal) {
 		carrier.classList.toggle(`carrierContainer-horizontal`);
+		carrierTwo.classList.toggle('carrier-horizontal');
 
 		battleship.classList.toggle(`battleshipContainer-horizontal`);
+		battleshipTwo.classList.toggle('battleship-horizontal');
 
-		cruiser.classList.toggle(`cruiserContainer-horizontal`);
-		submarine.classList.toggle(`submarineContainer-horizontal`);
-		destroyer.classList.toggle(`destroyerContainer-horizontal`);
+		cruiser.classList.toggle(`cruiserContainer-horizontal`); 
+		cruiserTwo.classList.toggle('cruiser-horizontal');
+
+		submarine.classList.toggle(`submarineContainer-horizontal`); 
+		submarineTwo.classList.toggle('submarine-horizontal');
+
+		destroyer.classList.toggle(`destroyerContainer-horizontal`); 
+		destroyerTwo.classList.toggle('destroyer-horizontal');
+
 		horizontal = true;
 	}
 	if (!horizontal) {
 		carrier.classList.toggle(`carrierContainer-horizontal`);
+		carrierTwo.classList.toggle('carrier-horizontal');
 
 		battleship.classList.toggle(`battleshipContainer-horizontal`);
+		battleshipTwo.classList.toggle('battleship-horizontal');
 
-		cruiser.classList.toggle(`cruiserContainer-horizontal`);
-		submarine.classList.toggle(`submarineContainer-horizontal`);
-		destroyer.classList.toggle(`destroyerContainer-horizontal`);
+		cruiser.classList.toggle(`cruiserContainer-horizontal`); 
+		cruiserTwo.classList.toggle('cruiser-horizontal');
+
+		submarine.classList.toggle(`submarineContainer-horizontal`); 
+		submarineTwo.classList.toggle('submarine-horizontal');
+
+		destroyer.classList.toggle(`destroyerContainer-horizontal`); 
+		destroyerTwo.classList.toggle('destroyer-horizontal');
+
 		horizontal = false;
 	}
 };
 
 const renderModalBoard = () => {
 	// Creating board for placing ships  
-	
 	const arr = Array.from({ length: 100 }, (_, i) => i);
-	const board = document.querySelector('.modal-Board');
+	const board = document.querySelector('.modal-Board'); 
+	
 	const grid = document.createElement('grid');
-	grid.className = 'grid1';
+	grid.className = 'grid1'; 
 
 	arr.forEach((__a, i) => {
 		const div = document.createElement('div');
 		div.className = 'cells1';
-		div.textContent = i;
+		// div.textContent = i;
 		div.dataset.id = i;
 		__a === 'ship' ? (div.style.backgroundColor = 'red') : null;
 		grid.append(div);
@@ -111,7 +138,7 @@ const renderModalBoard = () => {
 
 const hideStartScreen = () => { 
 	startScreen.style.visibility = 'hidden';  
-	document.querySelector('.modal-place').classList.toggle('modal-place-show'); 
+	document.querySelector('.modal-place').classList.toggle('modal-place-show');   
 }  
 const hideModalPlace = () => { 
 	modalPlace.classList.toggle('modal-place-show');

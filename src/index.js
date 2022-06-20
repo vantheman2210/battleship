@@ -2,19 +2,13 @@
 import Gameboard from './gameboard';
 import Player from './player';
 import { render, markSpots, showModal, restart, hideModalPlace, hideStartScreen } from './domControl';
-import coordinates from './dragDrop';
+import {coordinates,clear} from './dragDrop';
 
 const start = document.querySelector('#playGame');
 const playGame = document.querySelector('#start');
 
 // Function that controls entire gameLoop
 const gameLoop = (coords) => { 
-	console.log(coords.flat())
-	console.log(coords[0].name, coords[0].coordinates); 
-	console.log(coords[1].name, coords[1].coordinates); 
-	console.log(coords[2].name, coords[2].coordinates); 
-	console.log(coords[3].name, coords[3].coordinates); 
-	console.log(coords[4].name, coords[4].coordinates);
 	hideModalPlace();
 	let activePlayer = 0;
 
@@ -77,11 +71,15 @@ const gameLoop = (coords) => {
 };
 
 // addEventListener that restarts game when restart button pressed
-document.querySelector('#restart').addEventListener('click', () => {
-	restart();
-	gameLoop();
+document.querySelector('#restart').addEventListener('click', () => { 
+	clear();
+	restart(); 
 });
 
 // addEventListener that starts the game
-playGame.addEventListener('click', gameLoop.bind(this, coordinates));
-start.addEventListener('click', hideStartScreen);
+playGame.addEventListener('click', () => { 
+	gameLoop(coordinates);
+});
+start.addEventListener('click', () => { 
+	hideStartScreen();
+});

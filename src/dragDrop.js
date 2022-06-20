@@ -9,7 +9,8 @@ const cruiser = document.querySelector('.cruiserContainer');
 const submarine = document.querySelector('.submarineContainer');
 const destroyer = document.querySelector('.destroyerContainer');
 const ships = document.querySelectorAll('.ships');
-const playerBoard = document.querySelectorAll('.cells1');
+const playerBoard = document.querySelectorAll('.cells1'); 
+
 
 carrier.addEventListener('click', rotate);
 battleship.addEventListener('click', rotate);
@@ -52,7 +53,7 @@ function dragLeave() {
 	console.log('drag leave');
 }
 
-const coordinates = [];
+let coordinates = [];
 
 function dragDrop() {
 	console.log('drop');
@@ -80,6 +81,11 @@ function dragDrop() {
 		}
 	}
 	coordinates.push(shipCoords);
+} 
+
+function clear () { 
+	coordinates = [];  
+	playerBoard.forEach(element => element.style.background = 'white');
 }
-console.log(coordinates);
-export default coordinates;
+
+export  {coordinates, clear};
