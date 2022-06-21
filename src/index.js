@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import Gameboard from './gameboard';
 import Player from './player';
-import { render, markSpots, showModal, restart, hideModalPlace, hideStartScreen } from './domControl';
+import { render, markSpots, showModal, restart, hideModalPlace, hideStartScreen, attackSound } from './domControl';
 import {coordinates,clear} from './dragDrop';
 
 const start = document.querySelector('#playGame');
@@ -49,17 +49,21 @@ const gameLoop = (coords) => {
 		const computer = [ ...document.querySelectorAll('.cells2') ];
 		const playerTurn = () => {
 			computer.forEach((element, i) => {
-				element.addEventListener('click', () => {
-					player1.playerAttack(i);
+				element.addEventListener('click', () => { 
+					player1.playerAttack(i); 
+					attackSound();
 					markSpots(board2.board, board1.board);
-					changeTurn();
-					check();
+					changeTurn()
+					setTimeout(() => { 
+						check();
+					}, 2200)
 				});
 			});
 		};
 
 		const computerTurn = () => {
-			player2.computerAttack();
+			player2.computerAttack(); 
+			attackSound();
 			markSpots(board2.board, board1.board);
 			changeTurn();
 		};

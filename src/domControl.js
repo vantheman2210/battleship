@@ -62,6 +62,7 @@ const showModal = (input) => {
 	modal.classList.toggle('show-modal');
 	container.classList.toggle('is-blurred');
 	text.textContent = input; 
+	// eslint-disable-next-line no-use-before-define
 	audioPlayOff();
 };
 
@@ -154,6 +155,10 @@ const audioPlayOff = () => {
 const hideModalPlace = () => { 
 	modalPlace.classList.toggle('modal-place-show'); 
 	audioPlayOn();
-}; 
+};  
 
-export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace };
+const attackSound = () => { 
+	document.querySelector('.audioAttack').src = "/src/Sounds/hq-explosion-6288.mp3"; 
+}
+
+export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace, attackSound };
