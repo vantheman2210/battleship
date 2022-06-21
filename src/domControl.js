@@ -61,7 +61,8 @@ const markSpots = (board1, board2) => {
 const showModal = (input) => {
 	modal.classList.toggle('show-modal');
 	container.classList.toggle('is-blurred');
-	text.textContent = input;
+	text.textContent = input; 
+	audioPlayOff();
 };
 
 const restart = () => {
@@ -139,9 +140,20 @@ const renderModalBoard = () => {
 const hideStartScreen = () => { 
 	startScreen.style.visibility = 'hidden';  
 	document.querySelector('.modal-place').classList.toggle('modal-place-show');   
-}  
-const hideModalPlace = () => { 
-	modalPlace.classList.toggle('modal-place-show');
+}   
+
+const audioPlayOn = () => { 
+	document.querySelector('.audio').src = "/src/Sounds/submarine-33709.mp3"; 
+} 
+
+const audioPlayOff = () => { 
+	document.querySelector('.audio').src = ""; 
 }
+
+
+const hideModalPlace = () => { 
+	modalPlace.classList.toggle('modal-place-show'); 
+	audioPlayOn();
+}; 
 
 export { render, markSpots, showModal, restart, rotate, renderModalBoard, hideStartScreen, hideModalPlace };

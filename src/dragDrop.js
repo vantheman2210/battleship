@@ -86,6 +86,6 @@ function dragDrop() {
 function clear () { 
 	coordinates = [];  
 	playerBoard.forEach(element => element.style.background = 'white');
-}
+} 
 
 export  {coordinates, clear};

@@ -38,9 +38,9 @@ const gameLoop = (coords) => {
 	// Checking whether all ships have been sunk
 	function check() {
 		if (board2.allSunk()) {
-			showModal('Computer lost. You win!');
+			showModal('You sunk enemy fleet. You won!');
 		} else if (board1.allSunk()) {
-			showModal('You lost! The enemy has defeated you.');
+			showModal('The enemy has sunk your fleet. You lost!');
 		} else play();
 	}
 
